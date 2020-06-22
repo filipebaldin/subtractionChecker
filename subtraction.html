@@ -6,14 +6,13 @@
     <h1>Subtraction checker</h1>
     <div class="center">
         <label for="color">Choose the square color from the list: </label>
-        <input list="colors" name="color" id="color">
-        <datalist id="colors">
-            <option value="blue" />
-            <option value="green" />
-            <option value="purple" />
-            <option value="red" />
-            <option value="yellow" />
-        </datalist>
+        <select id="color">
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="purple">Purple</option>
+            <option value="red">Red</option>
+            <option value="yellow">Yellow</option>
+        </select>
         <br> <br>
         <input type="number" id="total" value="5" max="22"> -
         <input type="number" id="remove" value="0">
@@ -30,8 +29,8 @@
 
     <script>
         //setting our canva and our 'pencil' (context)
-        var canvas = document.querySelector('canvas');
-        var context = canvas.getContext('2d')
+        let canvas = document.querySelector('canvas');
+        let context = canvas.getContext('2d')
 
         //Function to draw a square
         function drawSquare(x, y, size, color) {
@@ -57,16 +56,16 @@
         //function to calculate the subtraction
         function calculate() {
             clearCanvas(context, canvas); //clear canvas
-            var squareColor = document.getElementById("color").value; //get color from html input
-            var total = document.getElementById("total").value; //get user value
-            var remove = document.getElementById("remove").value; //get user value
-            var result = total - remove;
-            var x = 50;
-            var y = 50;
-            var squares = 0;
-            var size = 50;
-            var totalStr = toString(total);
-            var text = "Here is your operation";
+            let squareColor = document.getElementById("color").value; //get color from html input
+            let total = document.getElementById("total").value; //get user value
+            let remove = document.getElementById("remove").value; //get user value
+            let result = total - remove;
+            let x = 50;
+            let y = 50;
+            let squares = 0;
+            let size = 50;
+            let totalStr = toString(total);
+            let text = "Here is your operation";
 
             if (result < 0) {
                 drawText("Error!", 50, 30);
@@ -82,7 +81,7 @@
 
                 }
 
-                var squaresToRemove = 0;
+                let squaresToRemove = 0;
 
                 while (remove > squaresToRemove) {
 
@@ -97,10 +96,10 @@
         }
 
         function checkAnswer() {
-            var element1 = document.getElementById("total").value;
-            var element2 = document.getElementById("remove").value;
-            var result = element1 - element2;
-            var usrAnswer = document.getElementById("usrAnswer").value;
+            let element1 = document.getElementById("total").value;
+            let element2 = document.getElementById("remove").value;
+            let result = element1 - element2;
+            let usrAnswer = document.getElementById("usrAnswer").value;
 
             if (usrAnswer == result) {
                 alert("Right Answer!")
@@ -119,4 +118,4 @@
 
     </script>
 </body>
-<footer>Subtraction Checker ver 1.11a by Filipe Baldin</footer>
+<footer>Subtraction Checker ver 1.12 by Filipe Baldin</footer>
