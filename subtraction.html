@@ -35,9 +35,6 @@
 
         //Function to draw a square
         function drawSquare(x, y, size, color) {
-            //var tela = document.querySelector('canvas');
-            //var pincel = tela.getContext('2d');
-
             context.fillStyle = color;
             context.fillRect(x, y, size, size);
             context.strokeStyle = 'black';
@@ -46,18 +43,13 @@
 
         //Function to write a text
         function drawText(text, x, y) {
-            //var tela = document.querySelector('canvas');
-            //var pincel = tela.getContext('2d');
-
             context.font = '20px Georgia';
             context.fillStyle = 'black';
             context.fillText(text, x, y);
         }
 
 
-        //settings + function to clear our canvas
-
-
+        //function to clear our canvas
         function clearCanvas(context, canvas) {
             context.clearRect(0, 0, canvas.width, canvas.height);
         }
@@ -65,7 +57,7 @@
         //function to calculate the subtraction
         function calculate() {
             clearCanvas(context, canvas); //clear canvas
-            var squareColor = document.getElementById("color").value;
+            var squareColor = document.getElementById("color").value; //get color from html input
             var total = document.getElementById("total").value; //get user value
             var remove = document.getElementById("remove").value; //get user value
             var result = total - remove;
@@ -127,4 +119,4 @@
 
     </script>
 </body>
-<footer>Subtraction Checker ver 1.1a by Filipe Baldin</footer>
+<footer>Subtraction Checker ver 1.11a by Filipe Baldin</footer>
