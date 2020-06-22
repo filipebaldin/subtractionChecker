@@ -1,0 +1,127 @@
+<!-- fracao.html -->
+
+<meta charset="UTF-8">
+
+<body>
+    <h1>Subtraction checker</h1>
+    <div class="center">
+        <label for="color">Choose the square color from the list: </label>
+        <input list="colors" name="color" id="color">
+        <datalist id="colors">
+            <option value="blue" />
+            <option value="green" />
+            <option value="purple" />
+            <option value="red" />
+            <option value="yellow" />
+        </datalist>
+        <br> <br>
+        <input type="number" id="total" value="5" max="22"> -
+        <input type="number" id="remove" value="0">
+        <input type="button" id="calcula" value="Show">
+    </div>
+    <br>
+    <input type="number" id="usrAnswer">
+    <input type="button" id="buttomCheck" value="Check my answer">
+    <br>
+    <canvas width="1200" height="130" id="canvas"></canvas>
+    <br>
+
+
+
+    <script>
+        //Function to draw a square
+        function drawSquare(x, y, tamanho, cor) {
+            var tela = document.querySelector('canvas');
+            var pincel = tela.getContext('2d');
+
+            pincel.fillStyle = cor;
+            pincel.fillRect(x, y, tamanho, tamanho);
+            pincel.strokeStyle = 'black';
+            pincel.strokeRect(x, y, tamanho, tamanho);
+        }
+
+        //Function to write a text
+        function desenhaTexto(texto, x, y) {
+            var tela = document.querySelector('canvas');
+            var pincel = tela.getContext('2d');
+
+            pincel.font = '20px Georgia';
+            pincel.fillStyle = 'black';
+            pincel.fillText(texto, x, y);
+        }
+
+
+        //settings + function to clear our canvas
+        var canvas = document.querySelector('canvas');
+        var context = canvas.getContext('2d')
+
+        function clearCanvas(context, canvas) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        //function to calculate the subtraction
+        function calculate() {
+            clearCanvas(context, canvas); //clear canvas
+            var squareColor = document.getElementById("color").value;
+            var total = document.getElementById("total").value; //get user value
+            var remove = document.getElementById("remove").value; //get user value
+            var result = total - remove;
+            var x = 50;
+            var y = 50;
+            var squares = 0;
+            var size = 50;
+            var totalStr = toString(total);
+            var text = "Here is your operation";
+
+            if (result < 0) {
+                desenhaTexto("Error!", 50, 30);
+                console.log(remove);
+                console.log(total);
+            } else {
+                desenhaTexto(text, 50, 30);
+                while (squares < total - remove) {
+
+                    drawSquare(x, y, size, squareColor);
+                    x = x + size;
+                    squares++
+
+                }
+
+                var squaresToRemove = 0;
+
+                while (remove > squaresToRemove) {
+
+                    drawSquare(x, y, size, 'white');
+                    x = x + size;
+                    squaresToRemove++
+
+                }
+
+            }
+
+        }
+
+        function checkAnswer() {
+            var element1 = document.getElementById("total").value;
+            var element2 = document.getElementById("remove").value;
+            var result = element1 - element2;
+            var usrAnswer = document.getElementById("usrAnswer").value;
+
+            if (usrAnswer == result) {
+                alert("Right Answer!")
+            } else {
+                alert("Wrong answer, try again")
+            }
+        }
+
+        document.getElementById("calcula").onclick = function() {
+            calculate()
+        }
+
+        document.getElementById("buttomCheck").onclick = function() {
+            checkAnswer()
+        }
+
+    </script>
+</body>
+<footer>Subtraction Checker ver 1.1a by Filipe Baldin</footer>
